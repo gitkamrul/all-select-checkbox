@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <ul>
+        <li><input type="checkbox" id="select_all" /> Selecct All</li>
+        <li><input class="checkbox" type="checkbox" > This is Item 1</li>
+        <li><input class="checkbox" type="checkbox" > This is Item 2</li>
+        <li><input class="checkbox" type="checkbox" > This is Item 3</li>
+        <li><input class="checkbox" type="checkbox" > This is Item 4</li>
+        <li><input class="checkbox" type="checkbox" > This is Item 5</li>
+        <li><input class="checkbox" type="checkbox" > This is Item 6</li>
+    </ul>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
+    </script>
+
+
+    <script>
+        //select all checkboxes
+        $("#select_all").change(function () { //"select all" change 
+            var status = this.checked; // "select all" checked status
+            $('.checkbox').each(function () { //iterate all listed checkbox items
+                this.checked = status; //change ".checkbox" checked status
+            });
+        });
+
+        $('.checkbox').change(function () { //".checkbox" change 
+            //uncheck "select all", if one of the listed checkbox item is unchecked
+            if (this.checked == false) { //if this item is unchecked
+                $("#select_all")[0].checked = false; //change "select all" checked status to false
+            }
+
+            //check "select all" if all checkbox items are checked
+            if ($('.checkbox:checked').length == $('.checkbox').length) {
+                $("#select_all")[0].checked = true; //change "select all" checked status to true
+            }
+        });
+    </script>
+</body>
+
+</html>
